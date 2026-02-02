@@ -1,4 +1,3 @@
-###sigs
 setwd("D:/gs/R significant sites") 
 myY_hb  <- read.table("hb.txt",  head = TRUE, stringsAsFactors = FALSE)[,1:4]
 myY_qy  <- read.table("qy.txt",  head = TRUE, stringsAsFactors = FALSE)[,1:4]
@@ -143,8 +142,6 @@ for (trait in traits) {
       pred_values <- predict(lm_model, newdata = test_df2[, -1])
 
       cor_gBV_blink  <- cor(test_all$Phenotype, pred_values, use = "complete.obs")
-   
-      cat("BLINK_gbv与真实表型的相关性为:",  cor_gBV_blink , "\n")
 	  
       results_all <- rbind(
         results_all,
@@ -213,8 +210,6 @@ for (trait in traits) {
       meta_res <- read.table(meta_tbl, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
       sig_res  <- subset(meta_res, P.value < sig_thre)
       meta_sig_count <- nrow(sig_res)
-      cat("Meta显著位点数量:", meta_sig_count, "\n")
-
       sig_snps <- intersect(sig_res$MarkerName, colnames(myGD_data))
 
       train_df3 <- data.frame(Taxa = train_all$Taxa)
@@ -232,7 +227,6 @@ for (trait in traits) {
       pred_values <- predict(lm_model, newdata = test_df3[, -1])
       cor_pred_meta <- cor(test_all$Phenotype, pred_values, use = "complete.obs")
       cor_gBV_meta  <- cor_gBV_blink 
-      cat("Meta预测与真实表型的相关性为:", cor_pred_meta, "\n")
 
       results_all <- rbind(
         results_all,
@@ -261,3 +255,4 @@ for (trait in traits) {
 
 if (!dir.exists("D:/gs results")) dir.create("D:/gs results", recursive = TRUE)
 write.csv(results_all, "D:/gs results/6.0CW_blink_vs_meta(significants).csv", row.names = FALSE)
+
