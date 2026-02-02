@@ -1,4 +1,3 @@
-# 随机分群significants 
 setwd("D:/gs/significant sites method")
 myY  <- read.table("AP.txt", head = TRUE)
 myGD <- read.csv("myGD.csv", head = TRUE)
@@ -272,3 +271,4 @@ for (trait in traits) {
 
 if (!dir.exists("D:/gs results")) dir.create("D:/gs results", recursive = TRUE)
 write.csv(results_all, "D:/gs results/6.0CW_blink_vs_meta_randomGroups_Sigs.csv", row.names = FALSE)
+
