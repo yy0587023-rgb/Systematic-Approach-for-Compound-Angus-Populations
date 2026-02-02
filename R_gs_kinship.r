@@ -1,4 +1,3 @@
-# 随机分群kinship 
 setwd("D:/gs2")
 myY  <- read.table("AP.txt", head = TRUE)
 myGD <- read.csv("myGD.csv", head = TRUE)
@@ -244,3 +243,4 @@ for (trait in traits) {
    
 if (!dir.exists("D:/gs results")) dir.create("D:/gs results", recursive = TRUE)
 write.csv(results_all, "D:/gs results/5.0DP_blink_vs_meta_randomGroups_kinship.csv", row.names = FALSE)
+
